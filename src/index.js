@@ -7,13 +7,15 @@ import ReactDom from 'react-dom';
 // import Todo from './component/Todo'
 // import Filter from './component/Filter'
 import TodoApp from './component/TodoApp';
-
+import TodoService from './service/service'
 //TodoApp 管理渲染,及所有状态
 //Create负责显示文本框,接收用户输入的待办事项
 //Todo 负责每条待办事项显示
 //Filter 负责一个状态fliter的切换
 //service 负责业务的处理,目前把数据处理也放至这个类
-ReactDom.render(<TodoApp />,document.getElementById('root'));
+
+const service = new TodoService();
+ReactDom.render(<TodoApp service={service} />,document.getElementById('root'));
 
 
 // const appState = new AppState();
