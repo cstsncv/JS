@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <script type = "text/javascript">
+        function getEventTrigger(event) {
+            console.log(event)
+            x = event.target;//从事件中获取元素
+            alert("触发的元素id是:" + x.id);
+        }    
+        </script>
+    </head>
+    <body>
+        <div id = "t1" onmousedown="getEventTrigger(event)">
+            点击这句话会触发一个事件,并弹出一个警示框
+        </div>
+    </body>
+</html>
