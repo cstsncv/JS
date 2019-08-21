@@ -1,6 +1,4 @@
-/**
- * Created by magedu on 2017/4/20.
- */
+
 
 const path = require('path');
 const webpack = require('webpack');
@@ -58,7 +56,7 @@ module.exports = {
         },
         proxy: {
             '/api': {
-                target: 'http://127.0.0.1:8080',
+                target: 'http://192.168.60.30:80',
                 changeOrigin: true
             }
         }

@@ -1,6 +1,3 @@
-/**
- * Created by magedu on 2017/4/20.
- */
 
 const path = require('path');
 const webpack = require('webpack');

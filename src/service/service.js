@@ -1,5 +1,6 @@
 import store from 'store';
-import { observable, computed } from 'mobx'
+import { observable, computed } from 'mobx';
+import axios from 'axios';
 
 const ALL = Symbol('all')   //Symbol 独一无二的值
 const COMPLETED = Symbol('completed')
@@ -17,7 +18,7 @@ export default class TodoService {
     static NAMESPACE = "todo::"; //prefix + str = key
     static STATES = {
         all:ALL,
-        completed:COMPLETED.
+        completed:COMPLETED,
         uncompleted:UNCOMPLETED
     }
 
@@ -56,24 +57,24 @@ export default class TodoService {
     // change = (new Date()).valueOf()  //设置一个状态值,监控改值变化,数据改变时改动该值 
     //需要在observe的render中使用这个变量才会触发刷新
 
-    create(title) {
-        console.log("service create!!!!!!!!!!!!!!!!!!")
-        const todo = {
-            key: TodoService.NAMESPACE + (new Date()).valueOf(),
-            title: title,
-            completed: false
-        }
-        this._todos.set(todo.key, todo);
-        store.set(todo.key, todo);
-        let temp = this._todos;  //解决新添加数据,不渲染,mobx认为this.todos无变化
-        this._todos = {};
-        this._todos = temp;
-        // console.log(this.change);
-        // this.change = (new Date()).valueOf();
-        return todo;
-    }
+    // create(title) {
+    //     console.log("service create!!!!!!!!!!!!!!!!!!")
+    //     const todo = {
+    //         key: TodoService.NAMESPACE + (new Date()).valueOf(),
+    //         title: title,
+    //         completed: false
+    //     }
+    //     this._todos.set(todo.key, todo);
+    //     store.set(todo.key, todo);
+    //     let temp = this._todos;  //解决新添加数据,不渲染,mobx认为this.todos无变化
+    //     this._todos = {};
+    //     this._todos = temp;
+    //     // console.log(this.change);
+    //     // this.change = (new Date()).valueOf();
+    //     return todo;
+    // }
 
-    cc(title){
+    create(title){
         const todo = {
             key: TodoService.NAMESPACE + (new Date()).valueOf(),
             title: title,
